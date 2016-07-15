@@ -189,7 +189,7 @@ function run_readlsl(varargin)
         
         if ~isempty(marker_inlet) && ~isempty(stamps)
             % receive any available markers
-            marker_clock = marker_inlet.time_correction([],opts.clock_alignment,opts.clock_est_window);
+            marker_clock = marker_inlet.time_correction(); %formerly called with [],opts.clock_alignment,opts.clock_est_window);
             while true
                 [sample,ts] = marker_inlet.pull_sample(0.0);
                 if ts                
