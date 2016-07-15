@@ -180,7 +180,7 @@ function run_readlsl(varargin)
     function result = read_data(data_inlet,marker_inlet,always_double)
         % get a new chunk of data
         [chunk,stamps] = data_inlet.pull_chunk();
-        data_clock = data_inlet.time_correction([],opts.clock_alignment,opts.clock_est_window);
+        data_clock = data_inlet.time_correction(); % formerly called passing ([], opts.clock_alignment, opts.clock_est_window);
         stamps = stamps + data_clock;
         if opts.jitter_correction
             stamps = update_regression(stamps); end
